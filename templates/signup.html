@@ -1,0 +1,72 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+   
+   <!--Link CSS-->
+    <link rel="stylesheet" href="{%static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/all.css' %}">
+    <link rel="stylesheet" href="{%static 'css/signup.css' %}">
+
+    <style>
+        .message-h4{
+            background-color: black;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    {% for message in messages %}
+    <h4 class="message-h4">{{message}}</h4>
+    {% endfor %}
+    <div class="container">
+        <h3 class="primary page-heading">Get Started Here!</h3>
+        <form method="post" action="create_user">
+            {% csrf_token %}
+            <div class="mb-3">
+            <!--<label for="Username" class="form-label" >Username</label>-->
+            <input type="text" name="username" class="textfield form-control-md" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+            <!--<label for="Email" class="form-label">Email</label>-->
+            <input type="email" name="email" class="textfield form-control-md" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+            <!--<label for="Password" class="form-label" placeholder="Enter your password">Password</label>-->
+            <input type="password" name="password" class="textfield form-control-md" placeholder="Enter Password">
+            </div>
+            <div class="mb-3">
+            <!--<label for="Password2" class="form-label">Confirm Password</label>-->
+            <input type="password" name="password2" class="textfield form-control-md" placeholder="Confirm Password">
+            </div>
+
+            <select name="select_as" class="form-select textfield" aria-label="Default select example">
+                <option selected="selected" disabled>Select Signup As</option>
+                <option value="Instructor">Instructor</option>
+                <option value="Student">Student</option>
+              </select>
+
+            <div class="mb-3">
+            <input type="submit" class="btn btn-success btn-signup">
+            </div>
+       </form>
+    </div>
+</body>
+</html>
